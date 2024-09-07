@@ -19,7 +19,7 @@ jobs:
         sudo apt-get upgrade
         sudo xargs --arg-file=${{ github.workspace }}/.github/workflows/build-dependencies.txt apt-get install -qq
         sudo xargs --arg-file=${{ github.workspace }}/.github/workflows/checkstyle-dependencies.txt apt-get install -qq
-        sudo python3 -m pip install --quiet flake8
+        sudo python3 -m pip install --break-system-packages --quiet flake8
         sudo apt-get clean
 
         # confirm that the tools are installed
