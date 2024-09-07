@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [20.04, 22.04]
+        os: [20.04, 22.04, 24.04]
     runs-on: ubuntu-${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [20.04, 22.04]
+        os: [20.04, 22.04, 24.04]
     needs: build
     uses: ./.github/workflows/zfs-linux-tests.yml
     with:
@@ -41,13 +41,13 @@ jobs:
   cleanup:
     if: always()
     name: Cleanup
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: testings
     steps:
     - uses: actions/download-artifact@v4
     - name: Generating summary
       run: |
-        tar xzf modules-22.04/modules-22.04.tgz .github tests
+        tar xzf modules-24.04/modules-24.04.tgz .github tests
         .github/workflows/scripts/generate-summary.sh
     # up to 4 steps, each can have 1 MiB output (for debugging log files)
     - name: Summary for errors #1

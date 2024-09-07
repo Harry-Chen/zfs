@@ -105,8 +105,10 @@ if [ ! -f Summary/Summary.md ]; then
   echo -n > Summary.md
   summarize_s "Sanity Tests Ubuntu 20.04" Logs-20.04-sanity
   summarize_s "Sanity Tests Ubuntu 22.04" Logs-22.04-sanity
+  summarize_s "Sanity Tests Ubuntu 24.04" Logs-24.04-sanity
   summarize_f "Functional Tests Ubuntu 20.04" Logs-20.04-functional
   summarize_f "Functional Tests Ubuntu 22.04" Logs-22.04-functional
+  summarize_f "Functional Tests Ubuntu 24.04" Logs-24.04-functional
 
   cat Summary.md >> $GITHUB_STEP_SUMMARY
   mkdir -p Summary
